@@ -10,7 +10,7 @@ edn_content = File.read(ARGV[0])
 
 edn_data = EDN.read(edn_content)
 
-puts edn_data
+#puts edn_data
 
 def init_screen
   Curses.noecho # do not show typed keys
@@ -25,7 +25,18 @@ end
 
 def write(line, column, text)
 	Curses.setpos(line, column)
-	Curses.addstr(text);
+	Curses.addstr(text)
+end
+
+def show_character(data)
+	inset = 10
+	position = 5
+	stat_keys = [:strength, :dexterity, :constitution,
+		:intelligence, :wisdom, :charisma]
+
+	stat_keys.each_with_index do |key, index|
+		write(position + index, inset, key.to_s + " " + data[key][:score].to_s)
+	end
 end
 
 init_screen do
@@ -33,11 +44,15 @@ init_screen do
 	index = 0
 
 	loop do
+		Curses.clear()
+
 		write(0, 0, "Character display")
 
 		write(1, 2, (index + 1).to_s)
 
-		write(3, 2, edn_data[index].to_s)
+		#write(3, 2, edn_data[index].to_s)
+
+		show_character(edn_data[index])
 
 		case Curses.getch
 		when Curses::Key::LEFT then index = [0, index - 1].max
