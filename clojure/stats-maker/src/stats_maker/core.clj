@@ -4,7 +4,7 @@
 
 (defn -main
   [& args]
-  (let [characters (take 100 chargen/scores)]
+  (let [characters (take 100 (repeatedly chargen/gen-character))]
   	(->> characters
   		(apply list)
   		(spit System/out))))

@@ -1,5 +1,8 @@
 (ns stats-maker.characters)
 
+(def stats [:strength :dexterity :constitution
+	:intelligence :wisdom :charisma])
+
 (defn d6 [] (inc (rand-int 6)))
 
 (defn create-score []
@@ -8,4 +11,6 @@
 		score (- (reduce + rolls) lowest)]
 	{:score score :rolls rolls}))
 
-(def scores (repeatedly create-score))
+(defn gen-character []
+	(-> stats
+		(zipmap (take 6 (repeatedly create-score)))))
