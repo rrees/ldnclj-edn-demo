@@ -6,5 +6,5 @@
   [& args]
   (let [characters (take 100 chargen/scores)]
   	(->> characters
-  		(apply str)
+  		(apply list)
   		(spit System/out))))
