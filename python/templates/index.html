@@ -1,0 +1,22 @@
+<!doctype HTML>
+
+<html>
+	<head>
+	</head>
+	<body>
+		<header><h1>Characters</h1></header>
+		{% for character in characters %}
+		<section>
+			{{character}}
+			<dl>
+				{% for attribute, value in character.iteritems() %}
+				<dt>{{attribute}}</dt>
+				<dd>{{value.score}}</dd>
+				{% endfor %}
+			</dl>
+
+		</section>
+		{% endfor %}
+	</body>
+
+</html>

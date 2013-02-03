@@ -56,7 +56,7 @@ init_screen do
 
 		case Curses.getch
 		when Curses::Key::LEFT then index = [0, index - 1].max
-		when Curses::Key::RIGHT then index = [edn_data.size(), index + 1].min
+		when Curses::Key::RIGHT then index = [edn_data.size() - 1, index + 1].min
 
 		when ?q then break
 		end
