@@ -2,21 +2,39 @@
 
 <html>
 	<head>
+		<link rel="Stylesheet" href="/static/css/base.css"/>
+		<link href='http://fonts.googleapis.com/css?family=Quintessential' rel='stylesheet' type='text/css'/>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	</head>
 	<body>
 		<header><h1>Characters</h1></header>
 		{% for character in characters %}
 		<section>
-			{{character}}
 			<dl>
 				{% for attribute, score in character %}
-				<dt>{{attribute}}</dt>
-				<dd>{{score}}</dd>
+				<dt class="attribute-name">{{attribute|title}}</dt>
+				<dd class="attribute-score">{{score}}</dd>
 				{% endfor %}
 			</dl>
 
 		</section>
 		{% endfor %}
+	
+	<script>
+	var currentSection = $('section').first().show();
+
+	$(function() {
+		$('section').hide();
+		currentSection.show();
+	});
+
+	$('body').bind('click keypress', function() {
+		currentSection = currentSection.hide().next('section').fadeIn();
+		if(currentSection.length == 0) {
+			currentSection = $('section').first().fadeIn();
+		}
+	});
+	</script>
 	</body>
 
 </html>

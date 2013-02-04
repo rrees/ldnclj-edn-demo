@@ -18,6 +18,6 @@ def list(data):
 	return [make_character(character) for character in data]
 
 def as_template_data(character):
-	attributes = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
+	attributes = ["strength", "intelligence", "dexterity", "wisdom", "constitution", "charisma"]
 
-	return [Attribute(k, v['score']) for k,v in character.iteritems()]
+	return [Attribute(name, character[name]['score']) for name in attributes]
