@@ -1,5 +1,9 @@
 from edn_format import Keyword
 
+from collections import namedtuple
+
+Attribute = namedtuple('Attribute', ['name', 'score'])
+
 def keyword_to_name(keyword):
 	return str(keyword)[1:]
 

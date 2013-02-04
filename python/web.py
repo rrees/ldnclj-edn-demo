@@ -12,9 +12,13 @@ with open(argv[1], 'r') as f:
 
 app = Flask(__name__)
 
+character_data = {
+	"all" : characters.list(data),
+}
+
 @app.route('/')
 def index():
-	return render_template('index.html', characters = characters.list(data))
+	return render_template('index.html', characters = character_data['all'])
 
 
 if __name__ == '__main__':
