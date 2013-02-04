@@ -28,15 +28,21 @@ print len(data), len(character_data['all']), len(character_data['fighters'])
 
 @app.route('/')
 def index():
-	return render_template('index.html', characters = character_data['all'])
+	return render_template('index.html',
+		label = "all",
+		characters = character_data['all'])
 
 @app.route('/fighters')
 def fighters():
-	return render_template('index.html', characters = character_data['fighters'])
+	return render_template('index.html',
+		label = "fighters",
+		characters = character_data['fighters'])
 
 @app.route('/clerics')
 def clerics():
-	return render_template('index.html', characters = character_data['clerics'])
+	return render_template('index.html',
+		label = "clerics",
+		characters = character_data['clerics'])
 
 if __name__ == '__main__':
 	app.run(debug = True)

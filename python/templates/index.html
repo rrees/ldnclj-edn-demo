@@ -7,7 +7,8 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	</head>
 	<body>
-		<header><h1>Characters</h1></header>
+		<header><h1>Characters ({{label}})</h1></header>
+
 		{% for character in characters %}
 		<section>
 			<dl>
@@ -19,22 +20,25 @@
 
 		</section>
 		{% endfor %}
+
+		<nav class="type-navigation"><a href="/">All</a> | <a href="/clerics">Clerics</a> | <a href="/fighters">Fighters</a></nav>
+		
 	
-	<script>
-	var currentSection = $('section').first().show();
+		<script>
+		var currentSection = $('section').first().show();
 
-	$(function() {
-		$('section').hide();
-		currentSection.show();
-	});
+		$(function() {
+			$('section').hide();
+			currentSection.show();
+		});
 
-	$('body').bind('click keypress', function() {
-		currentSection = currentSection.hide().next('section').fadeIn();
-		if(currentSection.length == 0) {
-			currentSection = $('section').first().fadeIn();
-		}
-	});
-	</script>
+		$('body').bind('click keypress', function() {
+			currentSection = currentSection.hide().next('section').fadeIn();
+			if(currentSection.length == 0) {
+				currentSection = $('section').first().fadeIn();
+			}
+		});
+		</script>
 	</body>
 
 </html>
