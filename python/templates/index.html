@@ -9,9 +9,9 @@
 		<section>
 			{{character}}
 			<dl>
-				{% for attribute, value in character.iteritems() %}
+				{% for attribute, score in character %}
 				<dt>{{attribute}}</dt>
-				<dd>{{value.score}}</dd>
+				<dd>{{score}}</dd>
 				{% endfor %}
 			</dl>
 
